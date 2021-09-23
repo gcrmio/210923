@@ -95,12 +95,36 @@ define([
         var messagingService = $('#messagingService').val();
         var body = $('#messageBody').val();
 
+        // payload['arguments'].execute.inArguments = [{
+        //     "accountSid": accountSid,
+        //     "authToken": authToken,
+        //     "messagingService": messagingService,
+        //     "body": body,
+        //     "to": "{{Contact.Attribute.TwilioV1.TwilioNumber}}" //<----This should map to your data extension name and phone number column
+        // }];
+
+        var eventDefinitionKey;
+        connection.trigger('requestTriggerEventDefinition');
+    
+        connection.on('requestedTriggerEventDefinition',
+        function(eventDefinitionModel) {
+            if(eventDefinitionModel){
+    
+                eventDefinitionKey = eventDefinitionModel.eventDefinitionKey;
+                console.log("[] Event Definition Key: " + eventDefinitionKey);
+                /*If you want to see all*/
+                console.log('[] Request Trigger',JSON.stringify(eventDefinitionModel));
+            }
+    
+        });
+        
         payload['arguments'].execute.inArguments = [{
             "accountSid": accountSid,
             "authToken": authToken,
             "messagingService": messagingService,
-            "body": body,
-            "to": "{{Contact.Attribute.TwilioV1.TwilioNumber}}" //<----This should map to your data extension name and phone number column
+            "body" : body,
+            "name" : "{{Event."+eventDefinitionKey+".Name}}", 
+            "phone": "{{Event."+eventDefinitionKey+".Phone}}"
         }];
 
         payload['metaData'].isConfigured = true;

@@ -11,6 +11,12 @@ var routes      = require('./routes');
 var activity    = require('./routes/activity');
 
 var app = express();
+
+// Configure Express
+app.set('port', process.env.PORT || 3000);
+app.use(bodyParser.json({type: 'application/json'})); 
+//app.use(bodyParser.urlencoded({ extended: true }));
+
 // check
 app.use((req, res, next) => {
   console.log('*****************************************');
@@ -19,12 +25,6 @@ app.use((req, res, next) => {
   //console.log('PORT: '+req.PORT);
   next();
 });
-
-// Configure Express
-app.set('port', process.env.PORT || 3000);
-app.use(bodyParser.json({type: 'application/json'})); 
-//app.use(bodyParser.urlencoded({ extended: true }));
-
 //app.use(express.methodOverride());
 //app.use(express.favicon());
 
