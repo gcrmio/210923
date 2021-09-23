@@ -17,14 +17,6 @@ app.set('port', process.env.PORT || 3000);
 app.use(bodyParser.json({type: 'application/json'})); 
 //app.use(bodyParser.urlencoded({ extended: true }));
 
-// check
-app.use((req, res, next) => {
-  console.log('*****************************************');
-  console.log('%s', req);
-  console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
-  //console.log('PORT: '+req.PORT);
-  next();
-});
 //app.use(express.methodOverride());
 //app.use(express.favicon());
 
@@ -48,4 +40,14 @@ app.post('/journeybuilder/execute/', activity.execute );
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
+
+// check
+app.use((req, res, next) => {
+  console.log('*****************************************');
+  console.log('%s', req);
+  console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
+  //console.log('PORT: '+req.PORT);
+  next();
+});
+
 });
