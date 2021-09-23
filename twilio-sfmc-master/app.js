@@ -11,6 +11,14 @@ var routes      = require('./routes');
 var activity    = require('./routes/activity');
 
 var app = express();
+// check
+app.use((req, res, next) => {
+  console.log('*****************************************');
+  console.log('%s', req);
+  console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
+  //console.log('PORT: '+req.PORT);
+  next();
+});
 
 // Configure Express
 app.set('port', process.env.PORT || 3000);
