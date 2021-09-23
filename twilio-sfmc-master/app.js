@@ -22,7 +22,7 @@ app.use((req, res, next) => {
   console.log(req.body, req);
 
   console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
-  //console.log('PORT: '+req.PORT);
+  console.log('PORT: '+req.PORT);
   next();
 });
 
