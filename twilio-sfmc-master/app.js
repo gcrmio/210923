@@ -14,6 +14,7 @@ var app = express();
 
 // Configure Express
 app.set('port', process.env.PORT || 3000);
+
 app.use(bodyParser.json({type: 'application/json'})); 
 //app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -27,6 +28,16 @@ if ('development' == app.get('env')) {
   app.use(errorhandler());
 }
 
+//check
+app.use((req, res, next) => {
+  console.log('*****************************************');
+  //console.log('%s', req);
+  console.log(req.body);
+  console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
+  //console.log('PORT: '+req.PORT);
+  next();
+});
+
 // HubExchange Routes
 app.get('/', routes.index );
 app.post('/login', routes.login );
@@ -38,14 +49,7 @@ app.post('/journeybuilder/validate/', activity.validate );
 app.post('/journeybuilder/publish/', activity.publish );
 app.post('/journeybuilder/execute/', activity.execute );
 
-//check
-app.use((req, res, next) => {
-  console.log('*****************************************');
-  console.log('%s', req);
-  console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
-  //console.log('PORT: '+req.PORT);
-  next();
-});
+
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
