@@ -15,6 +15,16 @@ var app = express();
 // Configure Express
 app.set('port', process.env.PORT || 3000);
 
+//check
+app.use((req, res, next) => {
+  console.log('*****************************************');
+  //console.log('%s', req);
+  console.log(req.body);
+  console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
+  //console.log('PORT: '+req.PORT);
+  next();
+});
+
 app.use(bodyParser.json({type: 'application/json'})); 
 //app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -28,15 +38,7 @@ if ('development' == app.get('env')) {
   app.use(errorhandler());
 }
 
-//check
-app.use((req, res, next) => {
-  console.log('*****************************************');
-  //console.log('%s', req);
-  console.log(req.body);
-  console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
-  //console.log('PORT: '+req.PORT);
-  next();
-});
+
 
 // HubExchange Routes
 app.get('/', routes.index );
