@@ -20,7 +20,7 @@ app.use((req, res, next) => {
   console.log('*****************************************');
   //console.log('%s', req);
   for(var i in req){
-    document.write(i +" : "+req[i] + '<br>');
+    console.log(i +" : "+req[i]);
   }
   //console.log(req.body, req);  
   console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
