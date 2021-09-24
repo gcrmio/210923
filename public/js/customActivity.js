@@ -87,20 +87,6 @@ define([
         // Response: endpoints = { restHost: <url> } i.e. "rest.s1.qa1.exacttarget.com"
         console.log("Get End Points function: "+JSON.stringify(endpoints));
     }
-    var eventDefinitionKey;
-    connection.trigger('requestTriggerEventDefinition');
-
-    connection.on('requestedTriggerEventDefinition',
-    function(eventDefinitionModel) {
-        if(eventDefinitionModel){
-
-            eventDefinitionKey = eventDefinitionModel.eventDefinitionKey;
-            console.log("[] Event Definition Key: " + eventDefinitionKey);
-            /*If you want to see all*/
-            console.log('[] Request Trigger',JSON.stringify(eventDefinitionModel));
-        }
-
-    });
     
     function save() {
 
@@ -108,7 +94,21 @@ define([
         var authToken = $('#authToken').val();
         var messagingService = $('#messagingService').val();
         var body = $('#messageBody').val();
-
+        
+        var eventDefinitionKey;
+        connection.trigger('requestTriggerEventDefinition');
+    
+        connection.on('requestedTriggerEventDefinition',
+        function(eventDefinitionModel) {
+            if(eventDefinitionModel){
+    
+                eventDefinitionKey = eventDefinitionModel.eventDefinitionKey;
+                console.log("[] Event Definition Key: " + eventDefinitionKey);
+                /*If you want to see all*/
+                console.log('[] Request Trigger',JSON.stringify(eventDefinitionModel));
+            }
+    
+        });
         // payload['arguments'].execute.inArguments = [{
         //     "accountSid": accountSid,
         //     "authToken": authToken,
