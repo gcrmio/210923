@@ -14,8 +14,13 @@ var app = express();
 
 // Configure Express
 app.set('port', process.env.PORT || 3000);
+app.use(bodyParser.json({type: 'application/json'})); 
+//app.use(bodyParser.urlencoded({ extended: true }));
 
-//check
+//app.use(express.methodOverride());
+//app.use(express.favicon());
+
+/*  check */
 app.use((req, res, next) => {
   console.log('*****************************************');
   // console.log('%s', req);
@@ -26,11 +31,6 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use(bodyParser.json({type: 'application/json'})); 
-//app.use(bodyParser.urlencoded({ extended: true }));
-
-//app.use(express.methodOverride());
-//app.use(express.favicon());
 
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -38,8 +38,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 if ('development' == app.get('env')) {
   app.use(errorhandler());
 }
-
-
 
 // HubExchange Routes
 app.get('/', routes.index );
@@ -51,8 +49,6 @@ app.post('/journeybuilder/save/', activity.save );
 app.post('/journeybuilder/validate/', activity.validate );
 app.post('/journeybuilder/publish/', activity.publish );
 app.post('/journeybuilder/execute/', activity.execute );
-
-
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));

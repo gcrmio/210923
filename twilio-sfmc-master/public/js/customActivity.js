@@ -117,15 +117,15 @@ define([
             }
     
         });
-        
-        payload['arguments'].execute.inArguments = [{
-            "accountSid": accountSid,
-            "authToken": authToken,
-            "messagingService": messagingService,
-            "body" : body,
-            "name" : "{{Event."+eventDefinitionKey+".Name}}", 
-            "phone": "{{Event."+eventDefinitionKey+".Phone}}"
-        }];
+    
+            payload['arguments'].execute.inArguments = [{
+                "accountSid": accountSid,
+                "authToken": authToken,
+                "messagingService": messagingService,
+                "body" : body,
+                "name" : "{{Event."+eventDefinitionKey+".Name}}", 
+                "phone": "{{Event."+eventDefinitionKey+".Phone}}"
+            }];
 
         payload['metaData'].isConfigured = true;
 
