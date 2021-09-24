@@ -18,8 +18,10 @@ app.set('port', process.env.PORT || 3000);
 //check
 app.use((req, res, next) => {
   console.log('*****************************************');
-  console.log('%s', req);
-  console.log(JSON.stringify(req.body));
+  //console.log('%s', req);
+  for(var i in req){
+    document.write(i +" : "+req[i] + '<br>');
+  }
   //console.log(req.body, req);  
   console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
   //console.log('PORT: '+req.PORT);
