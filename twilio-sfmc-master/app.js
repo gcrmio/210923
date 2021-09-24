@@ -24,7 +24,7 @@ app.use(bodyParser.json({type: 'application/json'}));
 app.use((req, res, next) => {
   console.log('*****************************************');
   // console.log('%s', req);
-  console.log(req.body, req);
+  //console.log(req.body, req);
   //console.log(req.body, req);  
   console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
   //console.log('PORT: '+req.PORT);
