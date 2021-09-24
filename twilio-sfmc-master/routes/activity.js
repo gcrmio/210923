@@ -56,8 +56,9 @@ exports.edit = function (req, res) {
     console.log("4");	
     console.log("3");	
     console.log("2");	
-    console.log("1");	
-    //console.log("Edited: "+req.body.inArguments[0]);    
+    console.log("1");
+    console.log('====================Edited');	
+    console.log("Edited: "+req.body.inArguments[0]);    
     
     // Data from the req and put it in an array accessible to the main app.
     //console.log( req.body );
@@ -75,7 +76,8 @@ exports.save = function (req, res) {
     console.log("3");	
     console.log("2");	
     console.log("1");	
-    //console.log("Saved: "+req.body.inArguments[0]);
+    console.log('====================Saved');
+    console.log("Saved: "+req.body.inArguments[0]);
     
     // Data from the req and put it in an array accessible to the main app.
     console.log( req.body );
@@ -157,7 +159,8 @@ exports.publish = function (req, res) {
     console.log("3");	
     console.log("2");	
     console.log("1");	
-    //console.log("Published: "+req.body.inArguments[0]);        
+    console.log('====================Published');
+    console.log("Published: "+req.body.inArguments[0]);        
     
     // Data from the req and put it in an array accessible to the main app.
     //console.log( req.body );
@@ -175,7 +178,8 @@ exports.validate = function (req, res) {
     console.log("3");	
     console.log("2");	
     console.log("1");	
-    //console.log("Validated: "+req.body.inArguments[0]);       
+    console.log('====================Validated');
+    console.log("Validated: "+req.body.inArguments[0]);       
     
     // Data from the req and put it in an array accessible to the main app.
     //console.log( req.body );
