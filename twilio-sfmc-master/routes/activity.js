@@ -78,10 +78,6 @@ exports.save = function (req, res) {
     //console.log("Saved: "+req.body.inArguments[0]);
     
     // Data from the req and put it in an array accessible to the main app.
-    /* Check */
-    console.log('===============================================================');
-    console.log( req.body );
-    console.log('===============================================================');
     logData(req);
     res.send(200, 'Save');
 };
@@ -167,7 +163,10 @@ exports.publish = function (req, res) {
     console.log("2");	
     console.log("1");	
     //console.log("Published: "+req.body.inArguments[0]);        
-    
+    console.log('PUBLISH===============================================================');
+    console.log(req.body);
+    console.log('PUBLISH DONE===============================================================');
+        
     // Data from the req and put it in an array accessible to the main app.
     //console.log( req.body );
 //     logData(req);
