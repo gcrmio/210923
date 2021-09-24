@@ -99,10 +99,10 @@ exports.execute = function (req, res) {
     //console.log("Executed: "+req.body.inArguments[0]);
 
     /* Check */
-    console.log('===============================================================');
+    console.log('EXECUTE ===============================================================');
     console.log(req.body);
-    console.log('==============================================================='); 
-        
+    console.log('EXECUTE DONE ==============================================================='); 
+
     var requestBody = req.body.inArguments[0];
 
     const accountSid = requestBody.accountSid;
@@ -144,9 +144,9 @@ exports.execute = function (req, res) {
             var decodedArgs = decoded.inArguments[0];
             
             logData(req);
-            console.log('===============================================================');
+            console.log('DECODED EXECUTE===============================================================');
             console.log(req.body);
-            console.log('===============================================================');
+            console.log('DECODED EXECUTE DONE===============================================================');
             res.send(200, 'Execute');
         } else {
             console.error('inArguments invalid.');
