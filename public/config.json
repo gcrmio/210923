@@ -21,7 +21,7 @@
                 }               
             ],
             "outArguments": [],
-            "url": "https://sheltered-temple-81136.herokuapp.com/execute",
+            "url": "https://sheltered-temple-81136.herokuapp.com/journeybuilder/execute",
             "verb": "POST",
             "body": "",
             "format": "json",
