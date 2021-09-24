@@ -19,9 +19,7 @@ app.set('port', process.env.PORT || 3000);
 app.use((req, res, next) => {
   console.log('*****************************************');
   //console.log('%s', req);
-  for(var i in req){
-    console.log(i +" : "+req[i]);
-  }
+  console.log(JSON.strinfigy(req.body, req));
   //console.log(req.body, req);  
   console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
   //console.log('PORT: '+req.PORT);
