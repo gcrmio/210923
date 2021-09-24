@@ -30,7 +30,7 @@
         }
     },
     "configurationArguments": {
-      "applicationExtensionKey": "520e5bb1-42f6-4257-88a7-1ad1f32b16ee",
+      "applicationExtensionKey": "e5277348-f48f-400e-9eec-73c47214725b",
        "save": {
            "url": "https://sheltered-temple-81136.herokuapp.com/save",
             "verb": "POST",
