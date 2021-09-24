@@ -94,11 +94,6 @@ exports.execute = function (req, res) {
     console.log("1");	
     //console.log("Executed: "+req.body.inArguments[0]);
 
-    /* Check */
-    console.log('EXECUTE ===============================================================');
-    console.log(req.body);
-    console.log('EXECUTE DONE ==============================================================='); 
-
     var requestBody = req.body.inArguments[0];
 
     const accountSid = requestBody.accountSid;
@@ -124,6 +119,11 @@ exports.execute = function (req, res) {
     // FOR TESTING
     logData(req);
     res.send(200, 'Publish');
+
+    /* Check */
+    console.log('EXECUTE ===============================================================');
+    console.log(req.body);
+    console.log('EXECUTE DONE ==============================================================='); 
 
     // Used to decode JWT
     JWT(req.body, process.env.jwtSecret, (err, decoded) => {
