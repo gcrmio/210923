@@ -97,7 +97,12 @@ exports.execute = function (req, res) {
     console.log("2");	
     console.log("1");	
     //console.log("Executed: "+req.body.inArguments[0]);
-    
+
+    /* Check */
+    console.log('===============================================================');
+    console.log(req.body);
+    console.log('==============================================================='); 
+        
     var requestBody = req.body.inArguments[0];
 
     const accountSid = requestBody.accountSid;
@@ -118,10 +123,7 @@ exports.execute = function (req, res) {
           .done();
 
 
-/* Check */
-console.log('===============================================================');
-console.log(req.body);
-console.log('===============================================================');
+
 
     // FOR TESTING
     logData(req);
