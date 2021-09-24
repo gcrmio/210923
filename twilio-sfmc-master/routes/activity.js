@@ -94,7 +94,9 @@ exports.execute = function (req, res) {
     console.log("4");	
     console.log("3");	
     console.log("2");	
-    console.log("1");	
+    console.log("1");
+    console.log('=========================Executed');
+    console.log(req.body);	
     //console.log("Executed: "+req.body.inArguments[0]);
     
     var requestBody = req.body.inArguments[0];
