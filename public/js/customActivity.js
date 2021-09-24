@@ -87,7 +87,21 @@ define([
         // Response: endpoints = { restHost: <url> } i.e. "rest.s1.qa1.exacttarget.com"
         console.log("Get End Points function: "+JSON.stringify(endpoints));
     }
+    var eventDefinitionKey;
+    connection.trigger('requestTriggerEventDefinition');
 
+    connection.on('requestedTriggerEventDefinition',
+    function(eventDefinitionModel) {
+        if(eventDefinitionModel){
+
+            eventDefinitionKey = eventDefinitionModel.eventDefinitionKey;
+            console.log("[] Event Definition Key: " + eventDefinitionKey);
+            /*If you want to see all*/
+            console.log('[] Request Trigger',JSON.stringify(eventDefinitionModel));
+        }
+
+    });
+    
     function save() {
 
         var accountSid = $('#accountSID').val();
@@ -101,23 +115,7 @@ define([
         //     "messagingService": messagingService,
         //     "body": body,
         //     "to": "{{Contact.Attribute.TwilioV1.TwilioNumber}}" //<----This should map to your data extension name and phone number column
-        // }];
-
-        var eventDefinitionKey;
-        connection.trigger('requestTriggerEventDefinition');
-    
-        connection.on('requestedTriggerEventDefinition',
-        function(eventDefinitionModel) {
-            if(eventDefinitionModel){
-    
-                eventDefinitionKey = eventDefinitionModel.eventDefinitionKey;
-                console.log("[] Event Definition Key: " + eventDefinitionKey);
-                /*If you want to see all*/
-                console.log('[] Request Trigger',JSON.stringify(eventDefinitionModel));
-            }
-    
-        });
-    
+        // }];  
             payload['arguments'].execute.inArguments = [{
                 "accountSid": accountSid,
                 "authToken": authToken,
