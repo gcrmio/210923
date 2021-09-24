@@ -19,7 +19,8 @@ app.set('port', process.env.PORT || 3000);
 app.use((req, res, next) => {
   console.log('*****************************************');
   //console.log('%s', req);
-  console.log(JSON.stringify(Object));
+  var myObject = req.body;
+  console.log(JSON.stringify(myObject, null, 4));
   //console.log(req.body, req);
   
   console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
