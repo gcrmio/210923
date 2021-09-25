@@ -12,6 +12,17 @@ define([
         { "label": "Create SMS Message", "key": "step1" }
     ];
     var currentStep = steps[0].key;
+
+    $(window).ready(onRender);
+
+    connection.on('initActivity', initialize);
+    connection.on('requestedTokens', onGetTokens);
+    connection.on('requestedEndpoints', onGetEndpoints);
+
+    connection.on('clickedNext', save);
+    //connection.on('clickedBack', onClickedBack);
+    //connection.on('gotoStep', onGotoStep);
+
     var eventDefinitionKey;
     connection.trigger('requestTriggerEventDefinition');
 
@@ -26,16 +37,7 @@ define([
         }
 
     });
-    
-    $(window).ready(onRender);
 
-    connection.on('initActivity', initialize);
-    connection.on('requestedTokens', onGetTokens);
-    connection.on('requestedEndpoints', onGetEndpoints);
-
-    connection.on('clickedNext', save);
-    //connection.on('clickedBack', onClickedBack);
-    //connection.on('gotoStep', onGotoStep);
 
     function onRender() {
         // JB will respond the first time 'ready' is called with 'initActivity'
@@ -101,7 +103,7 @@ define([
         // Response: endpoints = { restHost: <url> } i.e. "rest.s1.qa1.exacttarget.com"
         console.log("Get End Points function: "+JSON.stringify(endpoints));
     }
-    
+
     function save() {
 
         var accountSid = $('#accountSID').val();
@@ -109,21 +111,14 @@ define([
         var messagingService = $('#messagingService').val();
         var body = $('#messageBody').val();
 
-        // payload['arguments'].execute.inArguments = [{
-        //     "accountSid": accountSid,
-        //     "authToken": authToken,
-        //     "messagingService": messagingService,
-        //     "body": body,
-        //     "to": "{{Contact.Attribute.TwilioV1.TwilioNumber}}" //<----This should map to your data extension name and phone number column
-        // }];  
-            payload['arguments'].execute.inArguments = [{
-                "accountSid": accountSid,
-                "authToken": authToken,
-                "messagingService": messagingService,
-                "body" : body,
-                "name" : "{{Event."+eventDefinitionKey+".Name}}", 
-                "phone": "{{Event."+eventDefinitionKey+".Phone}}"
-            }];
+        payload['arguments'].execute.inArguments = [{
+            "accountSid": accountSid,
+            "authToken": authToken,
+            "messagingService": messagingService,
+            "body" : body,
+            "name" : "{{Event."+eventDefinitionKey+".Name}}", 
+            "phone": "{{Event."+eventDefinitionKey+".Phone}}"
+        }];
 
         payload['metaData'].isConfigured = true;
 
