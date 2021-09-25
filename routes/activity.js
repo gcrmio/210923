@@ -115,7 +115,7 @@ exports.execute = function (req, res) {
 
 
     // FOR TESTING
-    logData(req);
+    //logData(req);
     res.send(200, 'Publish');
 
     /* Check */
@@ -124,8 +124,8 @@ exports.execute = function (req, res) {
     console.log('EXECUTE DONE ==============================================================='); 
 
     // Used to decode JWT
-    // JWT(req.body, process.env.jwtSecret, (err, decoded) => {
-    JWT(req.body, process.jwtSecret, (err, decoded) => {
+    JWT(req.body, process.env.jwtSecret, (err, decoded) => {
+    // JWT(req.body, process.jwtSecret, (err, decoded) => {
 
         // verification error -> unauthorized request
         if (err) {
