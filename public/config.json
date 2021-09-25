@@ -25,18 +25,18 @@
             "verb": "POST",
             "body": "",
             "format": "json",
-            "useJwt": true,
+            "useJwt": false,
             "timeout": 2000
         }
     },
     "configurationArguments": {
-      "applicationExtensionKey": "e5277348-f48f-400e-9eec-73c47214725b",
+      "applicationExtensionKey": "e31abf9e-4860-47f9-87d8-cc5cafa58789",
        "save": {
            "url": "https://sheltered-temple-81136.herokuapp.com/save",
             "verb": "POST",
             "body": "",
             "format": "json",
-            "useJwt": true,
+            "useJwt": false,
             "timeout": 2000
        },
        "publish": {
@@ -44,7 +44,7 @@
             "verb": "POST",
             "body": "",
             "format": "json",
-            "useJwt": true,
+            "useJwt": false,
             "timeout": 2000
        },
        "validate": {
@@ -52,7 +52,7 @@
             "verb": "POST",
             "body": "",
             "format": "json",
-            "useJwt": true,
+            "useJwt": false,
             "timeout": 2000
        },
        "stop": {
@@ -60,7 +60,7 @@
             "verb": "POST",
             "body": "",
             "format": "json",
-            "useJwt": true,
+            "useJwt": false,
             "timeout": 2000
        }
     },

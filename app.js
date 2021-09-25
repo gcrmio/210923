@@ -9,30 +9,20 @@ var path        = require('path');
 var request     = require('request');
 var routes      = require('./routes');
 var activity    = require('./routes/activity');
+var url=require('url');
+
+require('request').debug = true;
 
 var app = express();
 
 // Configure Express
 app.set('port', process.env.PORT || 3000);
-app.use(bodyParser.json({type: 'application/json'})); 
+
+app.use(bodyParser.raw({type: 'application/jwt'}));
 //app.use(bodyParser.urlencoded({ extended: true }));
 
 //app.use(express.methodOverride());
 //app.use(express.favicon());
-
-/*  check */
-app.use((req, res, next) => {
-  console.log('REQ*****************************************');
-  // console.log('%s', req);
-  //console.log(req);
-  //console.log('REQ DONE **********************************');
-  //console.log(req.body);
-  console.log(req.body);  
-  console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
-  //console.log('PORT: '+req.PORT);
-  next();
-});
-
 
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -41,22 +31,29 @@ if ('development' == app.get('env')) {
   app.use(errorhandler());
 }
 
-// HubExchange Routes
+console.log('INFLOW START ------------------------------------------------------------------------------');
+
+app.use((req, res, next) => {
+  console.log(req.body);
+  //console.log('PORT: '+req.PORT);
+  next();
+ });
+
+ console.log('INFLOW END ------------------------------------------------------------------------------');
+
+ // HubExchange Routes
 app.get('/', routes.index );
 app.post('/login', routes.login );
 app.post('/logout', routes.logout );
 
 // Custom Hello World Activity Routes
-// app.post('/journeybuilder/save/', activity.save );
-// app.post('/journeybuilder/validate/', activity.validate );
-// app.post('/journeybuilder/publish/', activity.publish );
-// app.post('/journeybuilder/execute/', activity.execute );
-app.post('/save/', activity.save );
-app.post('/validate/', activity.validate );
-app.post('/publish/', activity.publish );
+app.post('/journeybuilder/save/', activity.save );
+app.post('/journeybuilder/validate/', activity.validate );
+app.post('/journeybuilder/publish/', activity.publish );
 app.post('/journeybuilder/execute/', activity.execute );
-console.log('&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&');
-console.log(req.body);
+
+//app.post('/journeybuilder/execute/', console.log('HERE99') );
+
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
