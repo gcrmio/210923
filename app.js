@@ -22,8 +22,10 @@ app.use(bodyParser.json({type: 'application/json'}));
 
 /*  check */
 app.use((req, res, next) => {
-  console.log('*****************************************');
+  console.log('REQ*****************************************');
   // console.log('%s', req);
+  console.log(req);
+  console.log('REQ DONE **********************************');
   console.log(req.body);
   //console.log(req.body, req);  
   console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
