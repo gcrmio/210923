@@ -78,7 +78,10 @@ exports.save = function (req, res) {
     //console.log("Saved: "+req.body.inArguments[0]);
     
     // Data from the req and put it in an array accessible to the main app.
-    logData(req);
+    //logData(req);
+    console.log('SAVE=================================================================');
+    console.log(req.body);
+    console.log('SAVE DONE============================================================');
     res.send(200, 'Save');
 };
 
