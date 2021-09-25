@@ -137,7 +137,7 @@ exports.execute = function (req, res) {
             // decoded in arguments
             var decodedArgs = decoded.inArguments[0];
             
-            logData(req);
+            //logData(req);
             console.log('DECODED EXECUTE===============================================================');
             console.log(req.body);
             console.log('DECODED EXECUTE DONE===============================================================');
