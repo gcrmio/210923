@@ -125,8 +125,7 @@ exports.execute = function (req, res) {
 
     // Used to decode JWT
     JWT(req.body, process.env.jwtSecret, (err, decoded) => {
-        console.log('JWTSECRET'+process.env.jwtSecret);
-        console.log('^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^');    
+        
         // verification error -> unauthorized request
         if (err) {
             console.error(err);
