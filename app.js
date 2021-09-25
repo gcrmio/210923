@@ -27,7 +27,7 @@ app.use((req, res, next) => {
   //console.log(req);
   //console.log('REQ DONE **********************************');
   //console.log(req.body);
-  console.log(req.body, req);  
+  console.log(req.body);  
   console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
   //console.log('PORT: '+req.PORT);
   next();
@@ -55,17 +55,8 @@ app.post('/save/', activity.save );
 app.post('/validate/', activity.validate );
 app.post('/publish/', activity.publish );
 app.post('/journeybuilder/execute/', activity.execute );
-app.use((req, res, next) => {
-  console.log('EXECUTEDAPPUSE*****************************************');
-  // console.log('%s', req);
-  //console.log(req);
-  //console.log('REQ DONE **********************************');
-  //console.log(req.body);
-  console.log(req.body);  
-  console.log('EXECUTEDAPPUSE DONE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
-  //console.log('PORT: '+req.PORT);
-  next();
-});
+console.log('&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&');
+console.log(req.body);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
