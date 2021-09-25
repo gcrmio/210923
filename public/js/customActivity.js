@@ -12,7 +12,21 @@ define([
         { "label": "Create SMS Message", "key": "step1" }
     ];
     var currentStep = steps[0].key;
+    var eventDefinitionKey;
+    connection.trigger('requestTriggerEventDefinition');
 
+    connection.on('requestedTriggerEventDefinition',
+    function(eventDefinitionModel) {
+        if(eventDefinitionModel){
+
+            eventDefinitionKey = eventDefinitionModel.eventDefinitionKey;
+            console.log("[] Event Definition Key: " + eventDefinitionKey);
+            /*If you want to see all*/
+            console.log('[] Request Trigger',JSON.stringify(eventDefinitionModel));
+        }
+
+    });
+    
     $(window).ready(onRender);
 
     connection.on('initActivity', initialize);
@@ -94,21 +108,7 @@ define([
         var authToken = $('#authToken').val();
         var messagingService = $('#messagingService').val();
         var body = $('#messageBody').val();
-        
-        var eventDefinitionKey;
-        connection.trigger('requestTriggerEventDefinition');
-    
-        connection.on('requestedTriggerEventDefinition',
-        function(eventDefinitionModel) {
-            if(eventDefinitionModel){
-    
-                eventDefinitionKey = eventDefinitionModel.eventDefinitionKey;
-                console.log("[] Event Definition Key: " + eventDefinitionKey);
-                /*If you want to see all*/
-                console.log('[] Request Trigger',JSON.stringify(eventDefinitionModel));
-            }
-    
-        });
+
         // payload['arguments'].execute.inArguments = [{
         //     "accountSid": accountSid,
         //     "authToken": authToken,
